@@ -15,6 +15,5 @@ namespace CodelyTv.Test.Mooc.Courses.Application.Create
         public static CreateCourseCommand Random()
         {
             return Create(CourseIdMother.Random(), CourseNameMother.Random(), CourseDurationMother.Random());
-        }
-    }
+        }    }
 }
