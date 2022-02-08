@@ -10,15 +10,15 @@ namespace CodelyTv.Mooc.Videos.Application.Create
     public class CreateVideoCommand : Command
     {
         public string Id { get; }
-        public string Type { get; }
+        public int TypeId { get; }
         public string Title { get; }
         public string Url { get; }
         public string CourseId { get; }
 
-        public CreateVideoCommand(string id, string type, string title, string url, string courseId)
+        public CreateVideoCommand(string id, int typeId, string title, string url, string courseId)
         {
             Id = id;
-            Type = type;
+            TypeId = typeId;
             Title = title;
             Url = url;
             CourseId = courseId;

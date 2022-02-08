@@ -24,6 +24,12 @@ namespace CodelyTv.Shared.Domain.ValueObject
                      .Select(f => f.GetValue(null))
                      .Cast<T>();
 
+        //public static Enumeration Get<T>(string value) =>
+        //    (T)typeof(T).GetFields(BindingFlags.Public |
+        //                        BindingFlags.Static |
+        //                        BindingFlags.DeclaredOnly)
+        //                .Select(f => f.GetValue(value));
+
         public override bool Equals(object obj)
         {
             if (obj is not Enumeration otherValue)

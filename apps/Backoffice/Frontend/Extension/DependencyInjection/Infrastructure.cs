@@ -1,4 +1,5 @@
 using CodelyTv.Backoffice.Courses.Domain;
+using CodelyTv.Backoffice.Courses.Infrastructure.Persistence;
 using CodelyTv.Backoffice.Courses.Infrastructure.Persistence.Elasticsearch;
 using CodelyTv.Backoffice.Shared.Infrastructure.Persistence.Elasticsearch;
 using CodelyTv.Backoffice.Shared.Infrastructure.Persistence.EntityFramework;
@@ -8,6 +9,8 @@ using CodelyTv.Mooc.CoursesCounters.Application.Find;
 using CodelyTv.Mooc.CoursesCounters.Domain;
 using CodelyTv.Mooc.CoursesCounters.Infrastructure.Persistence;
 using CodelyTv.Mooc.Shared.Infrastructure.Persistence.EntityFramework;
+using CodelyTv.Mooc.Videos.Domain;
+using CodelyTv.Mooc.Videos.Infrastructure.Persistence;
 using CodelyTv.Shared.Domain;
 using CodelyTv.Shared.Domain.Bus.Command;
 using CodelyTv.Shared.Domain.Bus.Event;
@@ -36,6 +39,8 @@ namespace CodelyTv.Apps.Backoffice.Frontend.Extension.DependencyInjection
             services.AddScoped<CourseRepository, MsSqlCourseRepository>();
 
             services.AddScoped<CoursesCounterFinder, CoursesCounterFinder>();
+
+            services.AddScoped<VideoRepository, MsSqlVideoRepository>();
 
             services.AddScoped<EventBus, RabbitMqEventBus>();
             services.AddScoped<EventBusConfiguration, RabbitMqEventBusConfiguration>();

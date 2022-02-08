@@ -42,3 +42,19 @@ IF (NOT EXISTS(SELECT *
             PRIMARY KEY ([id])
         );
     END
+
+IF (NOT EXISTS(SELECT *
+            FROM INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = 'dbo'
+                AND TABLE_NAME = 'videos'))
+BEGIN
+    CREATE TABLE [dbo].[videos]
+    (
+        [id] CHAR(36) NOT NULL PRIMARY KEY, 
+        [type_id] INT NOT NULL, 
+        [title] VARCHAR(255) NOT NULL, 
+        [url] VARCHAR(255) NOT NULL, 
+        [course_id] CHAR(36) NOT NULL, 
+        [type] VARCHAR(255) NOT NULL
+    );
+END

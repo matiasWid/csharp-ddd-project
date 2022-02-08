@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true
@@ -6,16 +6,21 @@
   "profiles": {
     "Frontend": {
       "commandName": "Project",
-      "launchBrowser": false,
-      "applicationUrl": "https://localhost:8093;http://localhost:8094",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:8093;http://localhost:8094"
+    },
+    "RabbitMq Backoffice command consumer": {
+      "commandName": "Project",
+      "commandLineArgs": "domain-events:rabbitmq:consume",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "RabbitMq Backoffice command consumer":{
+    "Migrate Courses": {
       "commandName": "Project",
-      "launchBrowser": false,
-      "commandLineArgs": "domain-events:rabbitmq:consume",
+      "commandLineArgs": "migratecourses",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

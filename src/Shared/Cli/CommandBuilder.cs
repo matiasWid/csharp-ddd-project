@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -29,6 +30,9 @@ namespace CodelyTv.Shared.Cli
 
             var service = scope.ServiceProvider.GetService(command);
             ((Command) service).Execute(_args);
+
+            Console.WriteLine("Press any key to exit");
+            Console.ReadKey(true);
         }
 
         protected Type GetCommand()

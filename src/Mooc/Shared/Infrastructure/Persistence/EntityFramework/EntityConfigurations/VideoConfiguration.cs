@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CodelyTv.Mooc.Videos.Domain;
 using CodelyTv.Shared.Infrastructure.Persistence.EntityFramework.Extension;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +27,7 @@ namespace CodelyTv.Mooc.Shared.Infrastructure.Persistence.EntityFramework.Entity
 
             builder.OwnsOne(x => x.Url)
                 .Property(x => x.Value)
-                .HasColumnName(nameof(Video.Type).ToDatabaseFormat());
+                .HasColumnName(nameof(Video.Url).ToDatabaseFormat());
 
             builder.Property(x => x.CourseId)
                 .HasConversion(v => v.Value, v => new Domain.CourseId(v))

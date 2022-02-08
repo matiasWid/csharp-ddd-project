@@ -6,7 +6,7 @@ namespace CodelyTv.Mooc.Videos.Domain
     public class VideoType : Enumeration
     {
         public static VideoType SCREENCAST = new(1, "screencast");
-        public static VideoType INTERVIEW = new(1, "interview");
+        public static VideoType INTERVIEW = new(2, "interview");
         
         public VideoType(int id, string value) : base(id, value)
         {

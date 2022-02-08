@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using CodelyTv.Mooc.Shared.Domain;
 using CodelyTv.Mooc.Videos.Domain;
@@ -21,7 +18,7 @@ namespace CodelyTv.Mooc.Videos.Application.Create
 
         public async Task Create(VideoId id, VideoType type, VideoTitle title, VideoUrl url, CourseId courseId)
         {
-            var video = new Video(id, type, title, url, courseId);
+            var video = Video.Create(id, type, title, url, courseId);
 
             await _repository.Save(video);
             await _enventBus.Publish(video.PullDomainEvents());

@@ -14,7 +14,8 @@ namespace CodelyTv.Apps.Backoffice.Frontend.Command
         protected BackofficeFrontendCommandBuilder(string[] args) : base(args,
             new Dictionary<string, Type>
             {
-                {"domain-events:rabbitmq:consume", typeof(ConsumeRabbitMqDomainEventsCommand)}
+                {"domain-events:rabbitmq:consume", typeof(ConsumeRabbitMqDomainEventsCommand)},
+                {"migratecourses", typeof(MigrateCoursesFromMsSqlToElasticsearchCommand)}
             })
         {
         }

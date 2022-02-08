@@ -41,36 +41,45 @@ namespace CodelyTv.Shared.Infrastructure.Bus.Event.RabbitMq
 
         public void ConsumeMessages(string queue, ushort prefetchCount = 10)
         {
-            var channel = _config.Channel();
-
-            DeclareQueue(channel, queue);
-
-            channel.BasicQos(0, prefetchCount, false);
-            var consumer = new EventingBasicConsumer(channel);
-            consumer.Received += async (model, ea) =>
+            try
             {
-                var scope = _serviceProvider.CreateScope();
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                var @event = _deserializer.Deserialize(message);
 
-                var subscriber = DomainEventSubscribers.ContainsKey(queue)
-                    ? DomainEventSubscribers[queue]
-                    : SubscribeFor(queue, scope);
+                var channel = _config.Channel();
 
-                try
+                DeclareQueue(channel, queue);
+
+                channel.BasicQos(0, prefetchCount, false);
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += async (model, ea) =>
                 {
-                    await ((DomainEventSubscriberBase) subscriber).On(@event);
-                }
-                catch
-                {
-                    HandleConsumptionError(ea, @event, queue);
-                }
+                    var scope = _serviceProvider.CreateScope();
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    var @event = _deserializer.Deserialize(message);
 
-                channel.BasicAck(ea.DeliveryTag, false);
-            };
+                    var subscriber = DomainEventSubscribers.ContainsKey(queue)
+                        ? DomainEventSubscribers[queue]
+                        : SubscribeFor(queue, scope);
 
-            var consumerId = channel.BasicConsume(queue, false, consumer);
+                    try
+                    {
+                        await ((DomainEventSubscriberBase) subscriber).On(@event);
+                    }
+                    catch
+                    {
+                        HandleConsumptionError(ea, @event, queue);
+                    }
+
+                    channel.BasicAck(ea.DeliveryTag, false);
+                };
+
+                var consumerId = channel.BasicConsume(queue, false, consumer);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public void WithSubscribersInformation(DomainEventSubscribersInformation information)

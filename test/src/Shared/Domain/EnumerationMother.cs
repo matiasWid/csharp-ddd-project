@@ -8,7 +8,7 @@ namespace CodelyTv.Test.Shared.Domain
     {
         public static Enumeration Random(IEnumerable<Enumeration> enumerations)
         {
-            return MotherCreator.Random().Shuffle(enumerations).FirstOrDefault();
+            return MotherCreator.Random().Shuffle(enumerations).First();
         }
     }
 }

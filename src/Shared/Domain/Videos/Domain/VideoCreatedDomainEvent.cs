@@ -1,43 +1,44 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using CodelyTv.Shared.Domain.Bus.Event;
 
 namespace CodelyTv.Shared.Domain.Videos.Domain
 {
-    public class VideoPublishDomainEvent : DomainEvent
+    public class VideoCreatedDomainEvent : DomainEvent
     {
-        public string Type { get; }
+        public int TypeId { get; }
         public string Title { get; }
-        public Uri Url { get; }
-        public Guid CourseId { get; }
+        public string Url { get; }
+        public string CourseId { get; }
 
-        public VideoPublishDomainEvent()
-        {
-        }
-
-        public VideoPublishDomainEvent(string id, string type,
-            string title, Uri url, Guid courseId,
+        public VideoCreatedDomainEvent(string id, int typeId,
+            string title, string url, string courseId,
             string eventId = null, string occurredOn = null) : base (id, eventId, occurredOn)
         {
-            Type = type;
+            TypeId = typeId;
             Title = title;
             Url = url;
             CourseId = courseId;
         }
 
+        public VideoCreatedDomainEvent()
+        {
+        }
+
         public override string EventName()
         {
-            return "video.uploaded";
+            return "video.created";
         }
 
         public override DomainEvent FromPrimitives(string aggregateId, Dictionary<string, string> body, string eventId, string occurredOn)
         {
-            return new VideoPublishDomainEvent(aggregateId,
-                body["type"],
+            return new VideoCreatedDomainEvent(aggregateId,
+                int.Parse(body["typeId"], CultureInfo.InvariantCulture),
                 body["title"],
-                new Uri(body["url"]),
-                new Guid(body["courseId"]),
+                body["url"],
+                body["courseId"],
                 eventId,
                 occurredOn);
         }
@@ -46,9 +47,9 @@ namespace CodelyTv.Shared.Domain.Videos.Domain
         {
             return new Dictionary<string, string>
             {
-                { "type",       Type },
+                { "typeId",     TypeId.ToString(CultureInfo.InvariantCulture) },
                 { "title",      Title },
-                { "url",        Url.AbsolutePath },
+                { "url",        Url },
                 { "courseId",   CourseId.ToString() }
             };
         }
@@ -57,19 +58,20 @@ namespace CodelyTv.Shared.Domain.Videos.Domain
         {
             if (this == obj) return true;
 
-            var item = obj as VideoPublishDomainEvent;
+            var item = obj as VideoCreatedDomainEvent;
             if (item == null) return false;
 
             return
                 string.Equals(AggregateId, item.AggregateId, StringComparison.InvariantCulture) &&
-                string.Equals(Type, item.Type, StringComparison.InvariantCulture) &&
+                int.Equals(TypeId, item.TypeId) &&
                 string.Equals(Title, item.Title, StringComparison.InvariantCulture) &&
-                Uri.Equals(Url, item.Url) && Guid.Equals(CourseId, item.CourseId);
+                string.Equals(Url, item.Url, StringComparison.InvariantCulture) &&
+                string.Equals(CourseId, item.CourseId);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(AggregateId, Type, Title, Url.AbsolutePath, CourseId);
+            return HashCode.Combine(AggregateId, TypeId, Title, Url, CourseId);
         }
     }
 }

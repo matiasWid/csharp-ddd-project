@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>CodelyTv.Apps.Backoffice.Backend</AssemblyName>
         <RootNamespace>CodelyTv.Apps.Backoffice.Backend</RootNamespace>
+        <UserSecretsId>862bbcdb-2ebe-4901-ace9-154888c5fc5d</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

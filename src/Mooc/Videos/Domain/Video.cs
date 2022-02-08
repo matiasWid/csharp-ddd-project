@@ -31,8 +31,8 @@ namespace CodelyTv.Mooc.Videos.Domain
             var video = new Video(id, type, title, url, courseId);
 
             video.Record(
-                new VideoPublishDomainEvent(id.Value, type.Value, title.Value,
-                new Uri(url.Value), new Guid(courseId.Value)));
+                new VideoCreatedDomainEvent(id.Value, type.Id, title.Value,
+                url.Value, courseId.Value));
 
             return video;
         }
