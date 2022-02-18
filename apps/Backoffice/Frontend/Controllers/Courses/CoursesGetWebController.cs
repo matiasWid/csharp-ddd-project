@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using CodelyTv.Mooc.CoursesCounters.Application.Find;
+using CodelyTv.Mooc.CoursesCounters.Domain;
 using CodelyTv.Shared.Domain.Bus.Query;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,15 +21,21 @@ namespace CodelyTv.Apps.Backoffice.Frontend.Controllers.Courses
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var counterResponse =
-                await _bus.Ask<CoursesCounterResponse>(new FindCoursesCounterQuery());
-
             ViewBag.Title = "Welcome";
-            ViewBag.Description = "CodelyTV - Backoffice";
-            ViewBag.CoursesCounter = counterResponse.Total;
-            ViewBag.UUID = Guid.NewGuid().ToString();
+                ViewBag.Description = "CodelyTV - Backoffice";
+                ViewBag.UUID = Guid.NewGuid().ToString();
+            try
+            {
+                var counterResponse =
+                    await _bus.Ask<CoursesCounterResponse>(new FindCoursesCounterQuery());
+                ViewBag.CoursesCounter = counterResponse.Total;
+            }
+            catch (CoursesCounterNotInitialized)
+            {
+                ViewBag.CoursesCounter = 0;
+            }
+                return View(VIEW);
 
-            return View(VIEW);
         }
     }
 }

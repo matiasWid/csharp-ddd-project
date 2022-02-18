@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodelyTv.Apps.Backoffice.Backend.Criteria;
 using CodelyTv.Backoffice.Courses.Application;
-using CodelyTv.Backoffice.Courses.Application.SearchAll;
 using CodelyTv.Backoffice.Courses.Application.SearchByCriteria;
 using CodelyTv.Shared.Domain.Bus.Query;
 using Microsoft.AspNetCore.Mvc;
