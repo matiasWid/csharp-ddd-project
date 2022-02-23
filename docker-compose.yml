@@ -13,6 +13,7 @@ services:
       - ./database/init.sql:/init.sql
       - ./database/mooc.sql:/mooc.sql
       - ./database/backoffice.sql:/backoffice.sql
+    restart: unless-stopped
   rabbitmq:
     container_name: codelytv-chsarp_ddd_skeleton-rabbitmq
     image: 'rabbitmq:3.7-management'
