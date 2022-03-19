@@ -1,7 +1,7 @@
 using CodelyTv.Backoffice.Courses.Application.Create;
 using CodelyTv.Backoffice.Courses.Application.SearchAll;
 using CodelyTv.Backoffice.Courses.Application.SearchByCriteria;
-using CodelyTv.Mooc.Courses.Application.Create;
+using CodelyTv.Mooc.Students.Application.Create;
 using CodelyTv.Mooc.CoursesCounters.Application.Find;
 using CodelyTv.Mooc.CoursesCounters.Application.Incrementer;
 using CodelyTv.Shared;

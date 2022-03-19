@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using CodelyTv.Mooc.Courses.Domain;
+using CodelyTv.Mooc.Students.Domain;
 using CodelyTv.Mooc.Shared.Domain;
 using CodelyTv.Mooc.Shared.Infrastructure.Persistence.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 
-namespace CodelyTv.Mooc.Courses.Infrastructure.Persistence
+namespace CodelyTv.Mooc.Students.Infrastructure.Persistence
 {
     public class MsSqlCourseRepository : CourseRepository
     {

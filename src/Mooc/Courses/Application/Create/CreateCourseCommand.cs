@@ -1,6 +1,6 @@
 using CodelyTv.Shared.Domain.Bus.Command;
 
-namespace CodelyTv.Mooc.Courses.Application.Create
+namespace CodelyTv.Mooc.Students.Application.Create
 {
     public class CreateCourseCommand : Command
     {

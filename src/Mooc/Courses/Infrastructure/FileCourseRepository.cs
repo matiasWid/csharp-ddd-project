@@ -1,10 +1,10 @@
 using System.IO;
 using System.Threading.Tasks;
-using CodelyTv.Mooc.Courses.Domain;
+using CodelyTv.Mooc.Students.Domain;
 using CodelyTv.Mooc.Shared.Domain;
 using Newtonsoft.Json;
 
-namespace CodelyTv.Mooc.Courses.Infrastructure
+namespace CodelyTv.Mooc.Students.Infrastructure
 {
     public class FileCourseRepository : CourseRepository
     {

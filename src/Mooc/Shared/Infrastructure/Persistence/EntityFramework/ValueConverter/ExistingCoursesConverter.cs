@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using CodelyTv.Mooc.Courses.Domain;
+using CodelyTv.Mooc.Students.Domain;
 using CodelyTv.Mooc.Shared.Domain;
 using CodelyTv.Shared.Infrastructure.Persistence.EntityFramework.EntityConfigurations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;

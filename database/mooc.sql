@@ -58,3 +58,15 @@ BEGIN
         [type] VARCHAR(255) NOT NULL
     );
 END
+
+IF (NOT EXISTS(SELECT *
+            FROM INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = 'dbo'
+                AND TABLE_NAME = 'students'))
+BEGIN
+    CREATE TABLE [dbo].[students]
+    (
+        [id] CHAR(36) NOT NULL PRIMARY KEY, 
+        [name] VARCHAR(255) NOT NULL
+    );
+END

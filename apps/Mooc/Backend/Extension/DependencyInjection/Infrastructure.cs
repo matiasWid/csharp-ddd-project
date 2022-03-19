@@ -1,8 +1,10 @@
-using CodelyTv.Mooc.Courses.Domain;
-using CodelyTv.Mooc.Courses.Infrastructure.Persistence;
+using CodelyTv.Mooc.Students.Domain;
+using CodelyTv.Mooc.Students.Infrastructure.Persistence;
 using CodelyTv.Mooc.CoursesCounters.Domain;
 using CodelyTv.Mooc.CoursesCounters.Infrastructure.Persistence;
 using CodelyTv.Mooc.Shared.Infrastructure.Persistence.EntityFramework;
+using CodelyTv.Mooc.Students.Domain;
+using CodelyTv.Mooc.Students.Infrastructure.Persistence;
 using CodelyTv.Mooc.Videos.Domain;
 using CodelyTv.Mooc.Videos.Infrastructure.Persistence;
 using CodelyTv.Shared.Domain;
@@ -31,6 +33,7 @@ namespace CodelyTv.Apps.Mooc.Backend.Extension.DependencyInjection
             services.AddScoped<CoursesCounterRepository, MsSqlCoursesCounterRepository>();
             services.AddScoped<CourseRepository, MsSqlCourseRepository>();
             services.AddScoped<VideoRepository, MsSqlVideoRepository>();
+            services.AddScoped<StudentRepository, MsSqlStudentRepository>();
 
             services.AddScoped<EventBus, RabbitMqEventBus>();
             services.AddScoped<EventBusConfiguration, RabbitMqEventBusConfiguration>();

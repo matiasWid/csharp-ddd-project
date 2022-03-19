@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using CodelyTv.Mooc.Shared.Domain;
 
-namespace CodelyTv.Mooc.Courses.Domain
+namespace CodelyTv.Mooc.Students.Domain
 {
     public interface CourseRepository
     {

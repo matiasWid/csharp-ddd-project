@@ -1,4 +1,4 @@
-using CodelyTv.Mooc.Courses.Domain;
+using CodelyTv.Mooc.Students.Domain;
 using CodelyTv.Test.Shared.Domain;
 
 namespace CodelyTv.Test.Mooc.Courses.Domain

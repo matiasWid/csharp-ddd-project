@@ -3,7 +3,7 @@ using CodelyTv.Mooc.Shared.Domain;
 using CodelyTv.Shared.Domain.Aggregate;
 using CodelyTv.Shared.Domain.Courses.Domain;
 
-namespace CodelyTv.Mooc.Courses.Domain
+namespace CodelyTv.Mooc.Students.Domain
 {
     public class Course : AggregateRoot
     {

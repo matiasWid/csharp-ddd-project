@@ -1,5 +1,5 @@
 using CodelyTv.Backoffice.Courses.Domain;
-using CodelyTv.Mooc.Courses.Application.Create;
+using CodelyTv.Mooc.Students.Application.Create;
 using CodelyTv.Test.Shared.Domain;
 
 namespace CodelyTv.Test.Backoffice.Courses.Domain

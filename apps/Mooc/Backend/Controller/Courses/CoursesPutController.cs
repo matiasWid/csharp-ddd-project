@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using CodelyTv.Mooc.Courses.Application.Create;
+using CodelyTv.Mooc.Students.Application.Create;
 using CodelyTv.Shared.Domain.Bus.Command;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

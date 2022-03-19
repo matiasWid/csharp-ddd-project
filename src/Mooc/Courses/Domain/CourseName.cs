@@ -1,6 +1,6 @@
 using CodelyTv.Shared.Domain.ValueObject;
 
-namespace CodelyTv.Mooc.Courses.Domain
+namespace CodelyTv.Mooc.Students.Domain
 {
     public class CourseName : StringValueObject
     {

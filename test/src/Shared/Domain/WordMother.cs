@@ -6,5 +6,15 @@ namespace CodelyTv.Test.Shared.Domain
         {
             return MotherCreator.Random().Word();
         }
+
+        public static string Random(int MinimumLength)
+        {
+            string word = MotherCreator.Random().Word();
+            while (word.Length < MinimumLength)
+            {
+                word = $"{word} {MotherCreator.Random().Word()}";
+            }
+            return word;
+        }
     }
 }

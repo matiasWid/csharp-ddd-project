@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using CodelyTv.Mooc.Courses.Domain;
+using CodelyTv.Mooc.Students.Domain;
 using CodelyTv.Mooc.Shared.Domain;
 using CodelyTv.Shared.Domain.Bus.Event;
 
-namespace CodelyTv.Mooc.Courses.Application.Create
+namespace CodelyTv.Mooc.Students.Application.Create
 {
     public class CourseCreator
     {

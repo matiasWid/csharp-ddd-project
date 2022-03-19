@@ -1,4 +1,4 @@
-using CodelyTv.Mooc.Courses.Application.Create;
+using CodelyTv.Mooc.Students.Application.Create;
 using CodelyTv.Test.Mooc.Courses.Domain;
 using Xunit;
 

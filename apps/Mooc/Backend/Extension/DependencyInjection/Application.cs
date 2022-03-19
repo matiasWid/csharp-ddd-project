@@ -1,6 +1,7 @@
-using CodelyTv.Mooc.Courses.Application.Create;
+using CodelyTv.Mooc.Students.Application.Create;
 using CodelyTv.Mooc.CoursesCounters.Application.Find;
 using CodelyTv.Mooc.CoursesCounters.Application.Incrementer;
+using CodelyTv.Mooc.Students.Application.Create;
 using CodelyTv.Mooc.Videos.Application.Create;
 using CodelyTv.Shared;
 using CodelyTv.Shared.Helpers;
@@ -14,6 +15,7 @@ namespace CodelyTv.Apps.Mooc.Backend.Extension.DependencyInjection
         {
             services.AddScoped<CourseCreator, CourseCreator>();
             services.AddScoped<VideoCreator, VideoCreator>();
+            services.AddScoped<StudentCreator, StudentCreator>();
 
             services.AddScoped<CoursesCounterIncrementer, CoursesCounterIncrementer>();
             services.AddScoped<CoursesCounterFinder, CoursesCounterFinder>();
