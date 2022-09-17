@@ -38,6 +38,12 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/health-check",
+      "publishAllPorts": true,
+      "useSSL": true
     }
   }
 }

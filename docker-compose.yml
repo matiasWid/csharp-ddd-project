@@ -1,8 +1,8 @@
-version: '3.0'
+version: '3.4'
 
 services:
   mssql:
-    container_name: codelytv-chsarp_ddd_skeleton-mssql
+    container_name: codelytv-chsarp_ddd_skeleton-mssql-vs
     image: mcr.microsoft.com/mssql/server:2019-latest    
     ports:
       - 5400:1433
@@ -15,7 +15,7 @@ services:
       - ./database/backoffice.sql:/backoffice.sql
     restart: unless-stopped
   rabbitmq:
-    container_name: codelytv-chsarp_ddd_skeleton-rabbitmq
+    container_name: codelytv-chsarp_ddd_skeleton-rabbitmq-vs
     image: 'rabbitmq:3.7-management'
     restart: unless-stopped
     ports:
@@ -25,7 +25,7 @@ services:
       - RABBITMQ_DEFAULT_USER=codelytv
       - RABBITMQ_DEFAULT_PASS=c0d3ly
   elasticsearch:
-    container_name: codelytv-chsarp_ddd_skeleton-elasticsearch
+    container_name: codelytv-chsarp_ddd_skeleton-elasticsearch-vs
     image: 'elasticsearch:7.9.1'
     restart: unless-stopped
     ports:
@@ -33,3 +33,61 @@ services:
       - 9200:9200
     environment:
       - discovery.type=single-node
+
+  backoffice-backend:
+    container_name: codelytv-chsarp_ddd_skeleton-backoffice_backend-vs
+    build:
+      context: .
+      dockerfile: apps/Backoffice/Backend/Dockerfile
+    ports:
+      - 8080:80
+    depends_on:
+      - elasticsearch
+
+  backoffice-frontend-event-consumer:
+    container_name: codelytv-chsarp_ddd_skeleton-backoffice_frontend-event-consumer
+    build:
+      context: .
+      dockerfile: apps/Backoffice/Frontend/Dockerfile
+      args:
+        START_ARGUMENTS: "domain-events:rabbitmq:consume"
+    depends_on:
+      - mssql
+      - rabbitmq
+      - elasticsearch
+
+  mooc-backend-event-consumer:
+    container_name: codelytv-chsarp_ddd_skeleton-mooc_backend-event-consumer
+    build:
+      context: .
+      dockerfile: apps/Mooc/Backend/Dockerfile
+      args:
+        START_ARGUMENTS: "domain-events:rabbitmq:consume"
+    depends_on:
+      - mssql
+      - rabbitmq
+      - elasticsearch
+
+  mooc-backend:
+    container_name: codelytv-chsarp_ddd_skeleton-mooc_backend
+    build:
+      context: .
+      dockerfile: apps/Mooc/Backend/Dockerfile
+    depends_on:
+      - mssql
+      - rabbitmq
+      - elasticsearch
+    ports:
+      - 8012:80
+
+  backoffice-frontend:
+    container_name: codelytv-chsarp_ddd_skeleton-backoffice_frontend
+    build:
+      context: .
+      dockerfile: apps/Backoffice/Frontend/Dockerfile
+    depends_on:
+      - mssql
+      - rabbitmq
+      - elasticsearch
+    ports:
+      - 8094:80

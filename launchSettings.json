@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "backoffice-backend": "StartDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "mssql": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "backoffice-frontend-event-consumer": "StartDebugging"
+      }
+    }
+  }
+}

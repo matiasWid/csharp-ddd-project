@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  backoffice-backend:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  backoffice-frontend-event-consumer:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  mooc-backend-event-consumer:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

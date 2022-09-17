@@ -116,10 +116,10 @@
             const inputs = Array.from(form.getElementsByTagName("input"))
                                 .concat(Array.from(form.getElementsByTagName("select")));
             const urlParts = inputs.map(input => input.name + "=" + input.value);
-            const url = "http://localhost:8012/courses?" + urlParts.join("&");
+            const url = "http://localhost:8080/courses?" + urlParts.join("&");
             addCoursesList(url);
         }
 </script>
 <script>
-    addCoursesList("http://localhost:8012/courses/");
+    addCoursesList("http://localhost:8080/courses/");
 </script>

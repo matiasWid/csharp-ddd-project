@@ -32,7 +32,7 @@ namespace CodelyTv.Shared.Cli
             ((Command) service).Execute(_args);
 
             Console.WriteLine("Press any key to exit");
-            Console.ReadKey(true);
+            Console.Read();
         }
 
         protected Type GetCommand()

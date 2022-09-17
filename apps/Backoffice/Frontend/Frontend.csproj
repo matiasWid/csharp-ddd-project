@@ -4,12 +4,16 @@
         <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>CodelyTv.Apps.Backoffice.Frontend</AssemblyName>
         <RootNamespace>CodelyTv.Apps.Backoffice.Frontend</RootNamespace>
+        <UserSecretsId>dffd8a32-c1d7-4782-9498-725723fc82e9</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..</DockerfileContext>
     </PropertyGroup>    
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
       <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.1" />
+      <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     </ItemGroup>    
 
     <ItemGroup>

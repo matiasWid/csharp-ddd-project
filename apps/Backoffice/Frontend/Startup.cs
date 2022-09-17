@@ -47,7 +47,6 @@ namespace CodelyTv.Apps.Backoffice.Frontend
 
             app.UseAuthorization();
 
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=HomeGetWeb}/{action=Index}/{id?}");
